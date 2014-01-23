@@ -67,5 +67,9 @@ namespace CSharpHelperCode
             }
             return frontItem;
         }
+
+        public int Count() {
+            return data.Count;
+        }
     }
 }
