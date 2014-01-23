@@ -21,55 +21,57 @@ namespace CSharpHelperCode
         }
     }
 
-    public class PriorityQueue<T> where T : IComparable<T> { //Copied from http://visualstudiomagazine.com/articles/2012/11/01/priority-queues-with-c.aspx
-        private List<T> data;
+    public class PriorityQueue<T> where T : IComparable<T> {
+        private List<T> _data;
 
         public PriorityQueue() {
-            this.data = new List<T>();
+            this._data = new List<T>();
         }
 
         public void Enqueue(T item) {
-            data.Add(item);
-            int ci = data.Count - 1;
-            while (ci > 0) {
-                int pi = (ci - 1) / 2;
-                if (data[ci].CompareTo(data[pi]) >= 0) {
+            _data.Add(item);
+            int CurrentItem = _data.Count - 1;
+            while (CurrentItem > 0) {
+                int PreviousItem = (CurrentItem - 1) / 2;
+                if (_data[CurrentItem].CompareTo(_data[PreviousItem]) >= 0) {
                     break;
                 }
-                T tmp = data[ci]; data[ci] = data[pi]; data[pi] = tmp;
-                ci = pi;
+                T tmp = _data[CurrentItem]; _data[CurrentItem] = _data[PreviousItem]; _data[PreviousItem] = tmp;
+                CurrentItem = PreviousItem;
             }
         }
 
         public T Dequeue() {
-            // Assumes pq isn't empty
-            int li = data.Count - 1;
-            T frontItem = data[0];
-            data[0] = data[li];
-            data.RemoveAt(li);
+            if (_data.Count == 0) {
+                throw new IndexOutOfRangeException("The PriorityQueu is empty");
+            }
+            int LastItem = _data.Count - 1;
+            T FrontItem = _data[0];
+            _data[0] = _data[LastItem];
+            _data.RemoveAt(LastItem);
 
-            --li;
-            int pi = 0;
+            --LastItem;
+            int PreviousItem = 0;
             while (true) {
-                int ci = pi * 2 + 1;
-                if (ci > li) break;
-                int rc = ci + 1;
-                if (rc <= li && data[rc].CompareTo(data[ci]) < 0) {
-                    ci = rc;
+                int CurrentItem = PreviousItem * 2 + 1;
+                if (CurrentItem > LastItem) break;
+                int CurrentRightItem = CurrentItem + 1;
+                if (CurrentRightItem <= LastItem && _data[CurrentRightItem].CompareTo(_data[CurrentItem]) < 0) {
+                    CurrentItem = CurrentRightItem;
                 }
-                if (data[pi].CompareTo(data[ci]) <= 0) {
+                if (_data[PreviousItem].CompareTo(_data[CurrentItem]) <= 0) {
                     break;
                 }
-                T tmp = data[pi];
-                data[pi] = data[ci];
-                data[ci] = tmp;
-                pi = ci;
+                T tmp = _data[PreviousItem];
+                _data[PreviousItem] = _data[CurrentItem];
+                _data[CurrentItem] = tmp;
+                PreviousItem = CurrentItem;
             }
-            return frontItem;
+            return FrontItem;
         }
 
         public int Count() {
-            return data.Count;
+            return _data.Count;
         }
     }
 }
