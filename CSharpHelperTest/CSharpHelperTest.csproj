@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="testInit2dArrayToValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="testPriorityQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSharpHelperCode.csproj">
