@@ -34,6 +34,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PersonalDLL|AnyCPU'">
+    <OutputPath>..\..\Personal DLLs\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
@@ -53,8 +62,13 @@
     <Compile Include="testInit2dArrayToValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="testPriorityQueue.cs" />
+    <Compile Include="testDijkstraAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CSharpDijkstraAlgorithm\CSharpDijkstraAlgorithm.csproj">
+      <Project>{81aabaa0-0f11-41fa-8508-b5797a0c2679}</Project>
+      <Name>CSharpDijkstraAlgorithm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CSharpHelperCode.csproj">
       <Project>{7981b51b-8c31-4366-b998-0a2cc141dd93}</Project>
       <Name>CSharpHelperCode</Name>

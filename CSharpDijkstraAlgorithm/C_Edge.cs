@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CSharpDijkstraAlgorithm
 {
-    class Edge : IComparable<Edge> {
+    public class Edge : IComparable<Edge> {
         public int Cost;
         private int _edgeID;
         private static int _edgeIDCount = 0;
