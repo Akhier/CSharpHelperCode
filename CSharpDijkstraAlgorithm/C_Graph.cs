@@ -26,7 +26,7 @@ namespace CSharpDijkstraAlgorithm
             _listOfNodes = new List<Vector2D>();
             _sourceNode = null;
         }
-        private void reset() {
+        private void Reset() {
             for (int i = 0; i < _listOfNodes.Count; i++) {
                 _listOfNodes[i].Visited = false;
                 _listOfNodes[i].AggregateCost = Vector2D.INFINITY;
@@ -35,11 +35,11 @@ namespace CSharpDijkstraAlgorithm
         }
         public void addEdge(Edge edge) {
             _listOfEdges.Add(edge);
-            this.reset();
+            this.Reset();
         }
         public void addVector(Vector2D node) {
             _listOfNodes.Add(node);
-            this.reset();
+            this.Reset();
         }
         private List<Vector2D> getListOfVisitedNodes() {
             List<Vector2D> listOfVisitedNodes = new List<Vector2D>();
@@ -78,7 +78,7 @@ namespace CSharpDijkstraAlgorithm
             if (_sourceNode == null) {
                 return false;
             }
-            this.reset();
+            this.Reset();
             _sourceNode.AggregateCost = 0;
             this.performCalculationForAllNodes();
             if (unreachable) {
