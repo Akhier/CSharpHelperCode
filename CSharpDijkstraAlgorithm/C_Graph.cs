@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CSharpHelperCode;
 
 namespace CSharpDijkstraAlgorithm
 {
@@ -53,13 +54,24 @@ namespace CSharpDijkstraAlgorithm
         private bool moreVisitedNodes() {
             return getListOfVisitedNodes().Count < _listOfNodes.Count;
         }
+        private PriorityQueue<Edge> getConnectedEdges(Vector2D startNode) {
+            PriorityQueue<Edge> connectedEdges = new PriorityQueue<Edge>();
+            for (int i = 0; i < _listOfEdges.Count; i++) {
+                if (_listOfEdges[i].getOtherVector(startNode) != null && !_listOfEdges[i].getOtherVector(startNode).Visited) {
+                    connectedEdges.Enqueue((Edge)_listOfEdges[i]);
+                }
+            }
+            return connectedEdges;
+        }
         private void performCalculationForAllNodes() {
             Vector2D currentNode = _sourceNode;
             currentNode.Visited = true;
             do {
                 Vector2D nextBestNode = null;
                 foreach (Vector2D visitedNode in this.getListOfVisitedNodes()){
-                    foreach (Edge connectedEdge in this.getConnectedEdges(visitedNode)){
+                    PriorityQueue<Edge> connectedEdges = getConnectedEdges(visitedNode);
+                    while (connectedEdges.Count() > 0) {
+                        Edge connectedEdge = connectedEdges.Dequeue();
                         if (connectedEdge.getOtherVector(visitedNode).AggregateCost == Vector2D.INFINITY || (visitedNode.AggregateCost + connectedEdge.Cost) < connectedEdge.getOtherVector(visitedNode).AggregateCost){
                             connectedEdge.getOtherVector(visitedNode).AggregateCost = visitedNode.AggregateCost + connectedEdge.Cost;
                             connectedEdge.getOtherVector(visitedNode).EdgeWithLowestCost = connectedEdge;
@@ -101,15 +113,6 @@ namespace CSharpDijkstraAlgorithm
             }
             shortestPath.Reverse();
             return shortestPath;
-        }
-        private List<Edge> getConnectedEdges(Vector2D startNode) {
-            List<Edge> connectedEdges = new List<Edge>();
-            for (int i = 0; i < _listOfEdges.Count; i++) {
-                if (_listOfEdges[i].getOtherVector(startNode) != null && !_listOfEdges[i].getOtherVector(startNode).Visited) {
-                    connectedEdges.Add((Edge)_listOfEdges[i]);
-                }
-            }
-            return connectedEdges;
         }
     }
 }

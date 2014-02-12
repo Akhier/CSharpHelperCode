@@ -1,6 +1,7 @@
-﻿namespace CSharpDijkstraAlgorithm
+﻿using System;
+namespace CSharpDijkstraAlgorithm
 {
-    class Edge {
+    class Edge : IComparable<Edge> {
         public int Cost;
         private int _edgeID;
         private static int _edgeIDCount = 0;
@@ -33,6 +34,9 @@
         }
         public override string ToString() {
             return "Edge ID: " + _edgeID + " - Connected to vectors " + _pointA.VectorID + " and " + _pointB.VectorID + " at a cost of " + Cost;
+        }
+        public int CompareTo(Edge otherEdge) {
+            return this.Cost.CompareTo(otherEdge.Cost);
         }
     }
 }

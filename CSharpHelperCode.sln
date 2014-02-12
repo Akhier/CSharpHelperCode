@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpHelperCode", "CSharpH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpHelperTest", "CSharpHelperTest\CSharpHelperTest.csproj", "{47932892-C90E-42A4-AF51-79011F8447D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpDijkstraAlgorithm", "CSharpDijkstraAlgorithm\CSharpDijkstraAlgorithm.csproj", "{81AABAA0-0F11-41FA-8508-B5797A0C2679}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,12 @@ Global
 		{47932892-C90E-42A4-AF51-79011F8447D1}.PersonalDLL|Any CPU.ActiveCfg = Release|Any CPU
 		{47932892-C90E-42A4-AF51-79011F8447D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47932892-C90E-42A4-AF51-79011F8447D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81AABAA0-0F11-41FA-8508-B5797A0C2679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AABAA0-0F11-41FA-8508-B5797A0C2679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AABAA0-0F11-41FA-8508-B5797A0C2679}.PersonalDLL|Any CPU.ActiveCfg = Release|Any CPU
+		{81AABAA0-0F11-41FA-8508-B5797A0C2679}.PersonalDLL|Any CPU.Build.0 = Release|Any CPU
+		{81AABAA0-0F11-41FA-8508-B5797A0C2679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AABAA0-0F11-41FA-8508-B5797A0C2679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
