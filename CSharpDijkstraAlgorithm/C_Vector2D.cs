@@ -8,21 +8,25 @@ namespace CSharpDijkstraAlgorithm
 {
     public class Vector2D {
         public const int INFINITY = -1;
-        public int X, Y, VectorID, AggregateCost;
+        public int X, Y, AggregateCost;
+        private int _vectorID;
         public bool Deadend, Visited;
-        public static int VectorIDCount = 0;
+        private static int _vectorIDCount = 0;
         public Edge EdgeWithLowestCost;
+        public int VectorID {
+            get { return _vectorID; }
+        }
         public Vector2D(int x, int y, bool deadend) {
             Visited = false;
             X = x;
             Y = y;
             Deadend = deadend;
             AggregateCost = INFINITY;
-            VectorID = ++VectorIDCount;
+            _vectorID = ++_vectorIDCount;
             EdgeWithLowestCost = null;
         }
         public override string ToString() {
-            return "Vector ID: " + VectorID + " X: " + X + " Y: " + Y + ";";
+            return "Vector ID: " + _vectorID + " X: " + X + " Y: " + Y + ";";
         }
     }
 }
