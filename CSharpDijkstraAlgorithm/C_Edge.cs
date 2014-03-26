@@ -4,7 +4,7 @@ namespace CSharpDijkstraAlgorithm
     public class Edge : IComparable<Edge> {
         public int Cost;
         private int _edgeID;
-        private static int _edgeIDCount = 0;
+        private static int _edgeIDCount = -1;
         private Vector2D _pointA, _pointB;
         public int EdgeID {
             get { return _edgeID; }

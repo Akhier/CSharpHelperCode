@@ -4,7 +4,7 @@ using CSharpHelperCode;
 
 namespace CSharpDijkstraAlgorithm
 {
-    class Graph {
+    public class Graph {
         private Vector2D _sourceNode;
         private List<Vector2D> _listOfNodes;
         private List<Edge> _listOfEdges;
@@ -38,8 +38,16 @@ namespace CSharpDijkstraAlgorithm
             _listOfEdges.Add(edge);
             this.Reset();
         }
+        public void addEdge(Vector2D pointA, Vector2D pointB, int cost) {
+            _listOfEdges.Add(new Edge(pointA, pointB, cost));
+            this.Reset();
+        }
         public void addVector(Vector2D node) {
             _listOfNodes.Add(node);
+            this.Reset();
+        }
+        public void addVector(int x, int y, bool deadend) {
+            _listOfNodes.Add(new Vector2D(x, y, deadend));
             this.Reset();
         }
         private List<Vector2D> getListOfVisitedNodes() {

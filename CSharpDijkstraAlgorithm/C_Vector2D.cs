@@ -5,7 +5,7 @@
         public int X, Y, AggregateCost;
         private int _vectorID;
         public bool Deadend, Visited;
-        private static int _vectorIDCount = 0;
+        private static int _vectorIDCount = -1;
         public Edge EdgeWithLowestCost;
         public int VectorID {
             get { return _vectorID; }
